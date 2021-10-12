@@ -1,0 +1,40 @@
+$colorBackground: cyan;
+
+@mixin makeContainer  {
+  padding: 10px 25px;
+  margin: 0 auto;
+  background-color: #f2f2f2;
+}
+
+@mixin ghost {
+  &::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    background: rgba(red, .3);
+    pointer-events: none;//Чтобы выделял текст
+  }
+}
+
+body {
+  background: $colorBackground;
+
+  h1 {
+    position: relative;
+    color: darken($colorBackground, 13%);
+
+    @include ghost()
+  }
+}
+
+.container {
+  max-width: 1170px;
+  @include makeContainer()
+}
+
+.container-fluid {
+  @include makeContainer()
+}
